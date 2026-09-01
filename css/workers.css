@@ -1,0 +1,214 @@
+/* =========================================================
+   WorkerHub — worker listing and profile components
+   ========================================================= */
+
+/* ---------- Listing layout ---------- */
+.workers-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.filters {
+  position: sticky;
+  top: 94px;
+  display: grid;
+  gap: 17px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ccf2ff;
+  box-shadow: var(--shadow-sm);
+}
+
+.filters span {
+  color: var(--primary);
+  font-weight: 900;
+}
+
+/* ---------- Toolbar ---------- */
+.list-toolbar {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-weight: 900;
+}
+
+.list-toolbar select {
+  width: 200px;
+}
+
+/* ---------- Worker cards ---------- */
+.worker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.worker-card {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #ccf2ff, #ccf2ff);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.worker-card:hover {
+  transform: translateY(-4px);
+  border-color: #b8ded4;
+  box-shadow: var(--shadow);
+}
+
+.worker-top {
+  display: flex;
+  gap: 15px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  object-fit: cover;
+  background: var(--surface-soft);
+  box-shadow: 0 8px 18px rgba(16, 32, 29, 0.08);
+}
+
+.worker-card h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.tag-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 10px;
+  border: 1px solid #cce9e0;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.worker-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.worker-meta span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.worker-meta strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.95rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-actions .btn {
+  flex: 1 1 auto;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 30px;
+  border: 1px dashed #b9d4cc;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Worker profile ---------- */
+.detail-shell {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 28px;
+}
+
+.profile-panel,
+.profile-content {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-panel {
+  padding: 24px;
+}
+
+.profile-panel .avatar {
+  width: 138px;
+  height: 138px;
+  margin-bottom: 18px;
+  border-radius: 22px;
+}
+
+.profile-panel h2 {
+  margin: 0;
+  letter-spacing: -0.035em;
+}
+
+.profile-panel .btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.profile-content {
+  padding: 30px;
+}
+
+.profile-content h1 {
+  margin-top: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.055em;
+}
+
+.profile-content h2 {
+  margin-top: 30px;
+  font-size: 1.25rem;
+}
+
+.skill-list,
+.review-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.review-list blockquote {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  background: var(--surface-soft);
+  color: #40504c;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Worker Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <a class="brand" href="index.html"><img src="assets/icons/logo.png" alt="" class="brand-icon"><span>Worker</span><span class="deb">Hub</span></a>
+    <form class="form-card auth-card" id="register-form">
+      <h1>Create account</h1>
+      <label>I am a <select id="account-type"><option>Customer</option><option>Worker</option></select></label>
+      <label>Full name <input type="text" id="register-name" required placeholder="Full name"></label>
+      <label>Email <input type="email" id="register-email" required placeholder="you@example.com"></label>
+      <label>Password <input type="password" id="register-password" required minlength="6" placeholder="At least 6 characters"></label>
+      <button class="btn" type="submit">Create Account</button>
+      <p class="form-message" id="auth-message" role="status"></p>
+      <p class="muted">Already registered? <a href="login.html">Log in</a></p>
+    </form>
+  </main>
+  <script src="js/auth.js"></script>
+</body>
+</html>

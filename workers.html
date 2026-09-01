@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Workers | Worker Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/workers.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="index.html"><img src="assets/icons/logo.png" alt="" class="brand-icon"><span>Workers</span><span class="deb">Hub</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" data-nav-links>
+        <a class="active" href="workers.html">Find Workers</a>
+        <a href="customer-dashboard.html">Dashboard</a>
+        <a href="login.html">Log In</a>
+        <a class="btn btn-small" href="register.html">Join</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="container page-title">
+      <p class="eyebrow">Browse professionals</p>
+      <h1>Find available workers</h1>
+    </section>
+
+    <section class="container workers-layout">
+      <aside class="filters" aria-label="Worker filters">
+        <label>Search <input id="search-input" type="search" placeholder="Name, service, area"></label>
+        <label>Service <select id="service-filter"><option value="">All services</option></select></label>
+        <label>Location <select id="location-filter"><option value="">All locations</option></select></label>
+        <label>Minimum rating <input id="rating-filter" type="range" min="0" max="5" step="0.5" value="0"><span id="rating-value">0+</span></label>
+        <label>Max hourly rate <input id="rate-filter" type="range" min="150" max="1200" step="50" value="1200"><span id="rate-value">₹1200</span></label>
+        <button class="btn btn-secondary" id="clear-filters" type="button">Clear Filters</button>
+      </aside>
+
+      <div>
+        <div class="list-toolbar">
+          <span id="result-count">Loading workers...</span>
+          <select id="sort-select" aria-label="Sort workers">
+            <option value="rating">Top rated</option>
+            <option value="rate">Lowest rate</option>
+            <option value="experience">Most experienced</option>
+          </select>
+        </div>
+        <div class="worker-grid" id="worker-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><span>Workers Hub</span><span>Find help near you.</span></div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/workers.js"></script>
+</body>
+</html>

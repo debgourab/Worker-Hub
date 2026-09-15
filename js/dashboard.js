@@ -21,9 +21,9 @@ function renderCustomerDashboard(workers) {
 
   document.querySelector("#customer-bookings").innerHTML = `<div class="job-list">${bookings.map((booking) => `
     <article class="job-card">
-      <span class="status">${booking.status}</span>
-      <strong>${booking.service} with ${booking.workerName}</strong>
-      <span class="muted">${booking.date} at ${booking.time}</span>
+      <span class="status">${escapeHTML(booking.status)}</span>
+      <strong>${escapeHTML(booking.service)} with ${escapeHTML(booking.workerName)}</strong>
+      <span class="muted">${escapeHTML(booking.date)} at ${escapeHTML(booking.time)}</span>
     </article>
   `).join("")}</div>`;
 

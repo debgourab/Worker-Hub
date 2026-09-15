@@ -603,3 +603,7 @@ textarea {
   outline: 3px solid rgba(244, 185, 66, 0.75);
   outline-offset: 3px;
 }
+
+/* Keyboard navigation */
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px; background: white; color: #10201d; transform: translateY(-150%); }
+.skip-link:focus { transform: translateY(0); }

@@ -15,18 +15,19 @@
   <link rel="icon" href="assets/icons/logo.png" type="image/png">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <nav class="nav container" aria-label="Primary navigation">
       <a class="brand" href="index.html"><img src="assets/icons/logo.png" alt="" class="brand-icon"><span>Worker</span><span class="deb">Hub</span></a>
       <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
       <div class="nav-links" data-nav-links>
         <a href="workers.html">Find Workers</a>
-        <a class="active" href="customer-dashboard.html">Customer Dashboard</a>
+        <a class="active" aria-current="page" href="customer-dashboard.html">Customer Dashboard</a>
         <a href="worker-dashboard.html">Worker Dashboard</a>
       </div>
     </nav>
   </header>
-  <main class="page dashboard container">
+  <main id="main-content" tabindex="-1" class="page dashboard container">
     <section class="dashboard-head">
       <div><p class="eyebrow">Customer workspace</p><h1>Your bookings</h1></div>
       <a class="btn" href="workers.html">Book Another Worker</a>

@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const workers = await getWorkers();
   const params = new URLSearchParams(window.location.search);
-  const worker = workers.find((item) => item.id === Number(params.get("id"))) || workers[0];
+  const worker = workers.find((item) => item.id === Number(params.get("id")));
   const form = document.querySelector("#booking-form");
 
+  if (!worker) {
+    form.innerHTML = `<h2>Choose a worker first</h2><a class="btn" href="workers.html">Browse workers</a>`;
+    return;
+  }
   document.querySelector("#worker-id").value = worker.id;
   document.querySelector("#worker-name").value = worker.name;
   document.querySelector("#service-name").value = worker.service;
@@ -30,7 +34,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     saveStoredBooking(booking);
     document.querySelector("#booking-message").textContent = "Booking request saved. Check your customer dashboard for status.";
     form.reset();
-    document.querySelector("#worker-id").value = worker.id;
+    if (!worker) {
+    form.innerHTML = `<h2>Choose a worker first</h2><a class="btn" href="workers.html">Browse workers</a>`;
+    return;
+  }
+  document.querySelector("#worker-id").value = worker.id;
     document.querySelector("#worker-name").value = worker.name;
     document.querySelector("#service-name").value = worker.service;
   });

@@ -113,7 +113,11 @@ function workerCard(worker) {
 function renderWorkerDetail() {
   const root = document.querySelector("#worker-detail");
   const id = Number(new URLSearchParams(window.location.search).get("id") || "1");
-  const worker = allWorkers.find((item) => item.id === id) || allWorkers[0];
+  const worker = allWorkers.find((item) => item.id === id);
+  if (!worker) {
+    root.innerHTML = `<section class="empty-state"><h1>Worker not found</h1><p>This profile is unavailable.</p><a class="btn" href="workers.html">Browse workers</a></section>`;
+    return;
+  }
 
   root.innerHTML = `
     <aside class="profile-panel">

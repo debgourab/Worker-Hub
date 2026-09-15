@@ -8,7 +8,7 @@ const fallbackWorkers = [
     rate: 650,
     experience: 8,
     availability: "Today",
-    image: "assets/images/worker-joy.jpg",
+    image: "assets/images/joy.jpg",
     skills: ["Wiring", "Switchboards", "Fan installation", "Fault repair"],
     bio: "Licensed electrician focused on home repairs, fixture installation, and urgent fault diagnosis.",
     reviews: ["Very punctual and fixed the wiring neatly.", "Explained the issue before starting work."]

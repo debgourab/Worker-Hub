@@ -87,7 +87,7 @@ function workerCard(worker) {
   return `
     <article class="worker-card">
       <div class="worker-top">
-        <img class="avatar" src="${worker.image}" alt="${worker.name}">
+        <img loading="lazy" decoding="async" class="avatar" src="${worker.image}" alt="${worker.name}">
         <div>
           <h2>${worker.name}</h2>
           <p class="muted">${worker.service} in ${worker.location}</p>
@@ -117,7 +117,7 @@ function renderWorkerDetail() {
 
   root.innerHTML = `
     <aside class="profile-panel">
-      <img class="avatar" src="${worker.image}" alt="${worker.name}">
+      <img loading="lazy" decoding="async" class="avatar" src="${worker.image}" alt="${worker.name}">
       <h2>${worker.name}</h2>
       <p class="muted">${worker.service} • ${worker.location}</p>
       <div class="worker-meta">

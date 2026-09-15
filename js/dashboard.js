@@ -29,7 +29,7 @@ function renderCustomerDashboard(workers) {
 
   document.querySelector("#recommended-workers").innerHTML = workers.slice(0, 3).map((worker) => `
     <a class="mini-worker" href="worker-details.html?id=${worker.id}">
-      <img src="${worker.image}" alt="${worker.name}">
+      <img loading="lazy" decoding="async" src="${worker.image}" alt="${worker.name}">
       <span><strong>${worker.name}</strong><br><span class="muted">${worker.service} • ${worker.rating}</span></span>
     </a>
   `).join("");

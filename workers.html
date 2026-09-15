@@ -40,6 +40,7 @@
         <label>Search <input id="search-input" type="search" placeholder="Name, service, area"></label>
         <label>Service <select id="service-filter"><option value="">All services</option></select></label>
         <label>Location <select id="location-filter"><option value="">All locations</option></select></label>
+        <label>Availability <select id="availability-filter"><option value="">Any time</option><option>Today</option><option>This week</option></select></label>
         <label>Minimum rating <input id="rating-filter" type="range" min="0" max="5" step="0.5" value="0"><span id="rating-value">0+</span></label>
         <label>Max hourly rate <input id="rate-filter" type="range" min="150" max="1200" step="50" value="1200"><span id="rate-value">₹1200</span></label>
         <button class="btn btn-secondary" id="clear-filters" type="button">Clear Filters</button>
@@ -47,7 +48,7 @@
 
       <div>
         <div class="list-toolbar">
-          <span id="result-count">Loading workers...</span>
+          <span id="result-count" role="status" aria-live="polite">Loading workers...</span>
           <select id="sort-select" aria-label="Sort workers">
             <option value="rating">Top rated</option>
             <option value="rate">Lowest rate</option>

@@ -15,14 +15,22 @@ function setupWorkerListing() {
   fillSelect(locationFilter, uniqueValues("location"));
 
   if (params.get("service")) serviceFilter.value = params.get("service");
-  if (params.get("location")) locationFilter.value = params.get("location");
+  if (params.get("location")) {
+    const match = uniqueValues("location").find((value) => value.toLowerCase() === params.get("location").trim().toLowerCase());
+    if (match) locationFilter.value = match;
+    else document.querySelector("#search-input").value = params.get("location");
+  }
+  document.querySelector("#availability-filter").value = params.get("availability") || "";
 
-  ["search-input", "service-filter", "location-filter", "rating-filter", "rate-filter", "sort-select"].forEach((id) => {
+  ["availability-filter", "search-input", "service-filter", "location-filter", "rating-filter", "rate-filter", "sort-select"].forEach((id) => {
     document.querySelector(`#${id}`).addEventListener("input", renderWorkerList);
   });
 
   document.querySelector("#clear-filters").addEventListener("click", () => {
     document.querySelector("#search-input").value = "";
+    document.querySelector("#availability-filter").value = "";
+    document.querySelector("#sort-select").value = "rating";
+    history.replaceState(null, "", location.pathname);
     serviceFilter.value = "";
     locationFilter.value = "";
     document.querySelector("#rating-filter").value = "0";
@@ -48,7 +56,7 @@ function fillSelect(select, values) {
 
 function renderWorkerList() {
   const list = document.querySelector("#worker-list");
-  const search = document.querySelector("#search-input").value.toLowerCase();
+  const search = document.querySelector("#search-input").value.trim().toLowerCase();
   const service = document.querySelector("#service-filter").value;
   const location = document.querySelector("#location-filter").value;
   const minRating = Number(document.querySelector("#rating-filter").value);
@@ -64,6 +72,7 @@ function renderWorkerList() {
       return haystack.includes(search)
         && (!service || worker.service === service)
         && (!location || worker.location === location)
+        && (!document.querySelector("#availability-filter").value || worker.availability === document.querySelector("#availability-filter").value)
         && worker.rating >= minRating
         && worker.rate <= maxRate;
     })

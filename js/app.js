@@ -36,12 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const homeSearch = document.querySelector("#home-search");
+  const homeSearch = document.querySelector("#home-search-form");
   if (homeSearch) {
-    homeSearch.addEventListener("click", () => {
+    homeSearch.addEventListener("submit", (event) => {
+      event.preventDefault();
       const service = document.querySelector("#home-service").value;
       const location = document.querySelector("#home-location").value.trim();
       const params = new URLSearchParams();
+      const availability = document.querySelector("#home-availability").value;
+      if (availability) params.set("availability", availability);
       if (service) params.set("service", service);
       if (location) params.set("location", location);
       window.location.href = `workers.html?${params.toString()}`;

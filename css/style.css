@@ -607,3 +607,9 @@ textarea {
 /* Keyboard navigation */
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px; background: white; color: #10201d; transform: translateY(-150%); }
 .skip-link:focus { transform: translateY(0); }
+
+/* Respect motion preferences across all components. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

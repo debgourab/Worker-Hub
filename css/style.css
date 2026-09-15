@@ -254,7 +254,7 @@ textarea {
 .hero p:not(.eyebrow) {
   max-width: 1000px;
   margin: 24px 0 0;
-  color: #667572;
+  color: #e3eee9;
   font-size: clamp(1rem, 2vw, 1.2rem);
 }
 

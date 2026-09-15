@@ -214,3 +214,9 @@
     font-size: 1.75rem;
   }
 }
+
+/* Allow content to shrink within grid and flex tracks. */
+.workers-layout > *, .detail-shell > *, .dashboard-grid > *, .worker-top > div { min-width: 0; }
+.worker-card, .job-card, .profile-content { overflow-wrap: anywhere; }
+input[type="checkbox"] { width: 18px; min-height: 18px; }
+@media (max-width: 640px) { input, select, textarea { font-size: 16px; } .profile-content { padding: 20px; } }

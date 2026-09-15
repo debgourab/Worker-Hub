@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loginForm) {
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      localStorage.setItem("laborconnectUser", document.querySelector("#login-email").value);
+      // Demo navigation only; do not persist personal credentials.
       document.querySelector("#auth-message").textContent = "Logged in for this demo. Redirecting...";
       setTimeout(() => {
         window.location.href = "customer-dashboard.html";
@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     registerForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const accountType = document.querySelector("#account-type").value;
-      localStorage.setItem("laborconnectUser", document.querySelector("#register-email").value);
-      document.querySelector("#auth-message").textContent = `${accountType} account created for this demo.`;
+      // Demo navigation only; do not persist personal credentials.
+      document.querySelector("#auth-message").textContent = `${accountType} demo selected. No account was created.`;
       setTimeout(() => {
         window.location.href = accountType === "Worker" ? "worker-dashboard.html" : "customer-dashboard.html";
       }, 800);

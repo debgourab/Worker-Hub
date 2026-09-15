@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      contactForm.querySelector(".form-message").textContent = "Message sent. Our team will reply soon.";
+      contactForm.querySelector(".form-message").textContent = "Demo complete. No message was sent; this form has no delivery service connected.";
       contactForm.reset();
     });
   }

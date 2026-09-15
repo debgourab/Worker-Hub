@@ -18,6 +18,7 @@ function renderCustomerDashboard(workers) {
     { workerName: "Dhabali Mondal", service: "Cleaner", date: "2026-06-22", time: "09:00", status: "Pending confirmation" }
   ];
   const bookings = stored.length ? stored : demoBookings;
+  document.querySelector("#customer-bookings").setAttribute("aria-label", stored.length ? "Saved requests" : "Sample requests");
 
   document.querySelector("#customer-bookings").innerHTML = `<div class="job-list">${bookings.map((booking) => `
     <article class="job-card">
@@ -48,8 +49,8 @@ function renderWorkerDashboard() {
       <strong>${job.service}</strong>
       <span class="muted">${job.customer} • ${job.area}</span>
       <div class="card-actions">
-        <button class="btn btn-small" type="button">Accept</button>
-        <button class="btn btn-small btn-secondary" type="button">Message</button>
+        <button class="btn btn-small" type="button" disabled title="Sample request only">Accept (demo)</button>
+        <button class="btn btn-small btn-secondary" type="button" disabled title="Messaging is not connected">Message (demo)</button>
       </div>
     </article>
   `).join("")}</div>`;

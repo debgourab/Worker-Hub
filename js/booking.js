@@ -49,11 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     document.querySelector("#booking-message").textContent = "Booking request saved. Check your customer dashboard for status.";
     form.reset();
-    if (!worker) {
-    form.innerHTML = `<h2>Choose a worker first</h2><a class="btn" href="workers.html">Browse workers</a>`;
-    return;
-  }
-  document.querySelector("#worker-id").value = worker.id;
+    document.querySelector("#worker-id").value = worker.id;
     document.querySelector("#worker-name").value = worker.name;
     document.querySelector("#service-name").value = worker.service;
   });

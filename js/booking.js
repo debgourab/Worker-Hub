@@ -13,10 +13,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelector("#service-name").value = worker.service;
 
   const dateInput = document.querySelector("#job-date");
-  dateInput.min = new Date().toISOString().split("T")[0];
+  const today = new Date();
+  dateInput.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    const message = document.querySelector("#booking-message");
+    const fields = ["customer-name", "customer-phone", "job-address", "job-details"];
+    if (fields.some((id) => !document.getElementById(id).value.trim())) {
+      message.textContent = "Please complete every field with more than spaces."; return;
+    }
+    const scheduled = new Date(`${dateInput.value}T${document.querySelector("#job-time").value}`);
+    if (!Number.isFinite(scheduled.getTime()) || scheduled <= new Date()) {
+      message.textContent = "Choose a future date and time."; return;
+    }
+    const phone = document.querySelector("#customer-phone").value.replace(/[\s()+-]/g, "");
+    if (!/^\d{10,15}$/.test(phone)) { message.textContent = "Enter a phone number with 10 to 15 digits."; return; }
     const booking = {
       id: Date.now(),
       workerId: worker.id,
@@ -31,7 +43,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       status: "Pending confirmation"
     };
 
-    saveStoredBooking(booking);
+    if (!saveStoredBooking(booking)) {
+      message.textContent = "Booking could not be saved. Enable browser storage or free some space and retry.";
+      return;
+    }
     document.querySelector("#booking-message").textContent = "Booking request saved. Check your customer dashboard for status.";
     form.reset();
     if (!worker) {

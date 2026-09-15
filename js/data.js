@@ -89,18 +89,31 @@ async function getWorkers() {
   try {
     const response = await fetch("data/workers.json");
     if (!response.ok) throw new Error("Could not load workers.json");
-    return await response.json();
+    const workers = await response.json();
+    if (!Array.isArray(workers) || !workers.length || !workers.every((worker) =>
+      Number.isInteger(worker.id) && ["name", "service", "location", "image", "bio", "availability"].every((key) => typeof worker[key] === "string") &&
+      ["rating", "rate", "experience"].every((key) => Number.isFinite(worker[key])) &&
+      Array.isArray(worker.skills) && Array.isArray(worker.reviews))) {
+      throw new Error("Invalid worker dataset");
+    }
+    return workers;
   } catch (error) {
     return fallbackWorkers;
   }
 }
 
 function getStoredBookings() {
-  return JSON.parse(localStorage.getItem("laborconnectBookings") || "[]");
+  try {
+    const bookings = JSON.parse(localStorage.getItem("laborconnectBookings") || "[]");
+    return Array.isArray(bookings) ? bookings.filter((item) => item && typeof item === "object" && !Array.isArray(item)) : [];
+  } catch { return []; }
 }
 
 function saveStoredBooking(booking) {
   const bookings = getStoredBookings();
   bookings.unshift(booking);
-  localStorage.setItem("laborconnectBookings", JSON.stringify(bookings));
+  try {
+    localStorage.setItem("laborconnectBookings", JSON.stringify(bookings));
+    return true;
+  } catch { return false; }
 }
